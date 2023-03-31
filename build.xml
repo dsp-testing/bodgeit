@@ -25,7 +25,7 @@
 	<!-- Compile all of the source code -->
 	<target name="compile">
 		<!-- Compile the java code -->
-		<javac target="1.5" destdir="build/WEB-INF/classes" srcdir="src" classpathref="java.classpath" />
+		<javac target="1.7" destdir="build/WEB-INF/classes" srcdir="src" classpathref="java.classpath" />
 	</target>
 
 	<target name="build" depends="compile">

@@ -39,3 +39,16 @@ In the relatively near future I'm hoping to add things like:
 You can now also perform automated security regression tests on the Bodge It Store - see the wiki.
 
 Any feedback (or offers of help to develop it further;) would be appreciated.
+
+## Build
+
+# BUILD FAILED /bodgeit/build.xml:28: destination directory "/bodgeit/build/WEB-INF/classes" does not exist or is not a directory
+mkdir build/WEB-INF/classes
+
+#    [javac] error: Source option 5 is no longer supported. Use 7 or later.
+#    [javac] error: Target option 5 is no longer supported. Use 7 or later.
+```diff
+- <javac target="1.5" ...
++ <javac target="1.7" ...
+```
+ant -noinput -f "build.xml" "compile"
