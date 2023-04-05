@@ -52,3 +52,27 @@ mkdir build/WEB-INF/classes
 + <javac target="1.7" ...
 ```
 ant -noinput -f "build.xml" "compile"
+
+## Maven Build
+Added to inject jspc compiler step easily. Copied over java and jsp files to `thebodgeitstore` project.  Added jspc plugin to pom.xml, when running codeql seeing it compile the JSP files (if i make a syntax error in a tag, i see compiler error)
+
+```
+cd bodgeitstore
+codeql database create codeql_db --language=java --command="mvn clean package" --overwrite
+```
+
+yields:
+
+```[2023-04-05 00:42:40] [build-stdout] [INFO] --- jspc:3.2.0:compile (jspc) @ thebodgeitstore ---
+[2023-04-05 00:42:40] [build-stderr] Apr 05, 2023 12:42:40 AM org.apache.jasper.servlet.TldScanner scanJars
+[2023-04-05 00:42:40] [build-stderr] INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+[2023-04-05 00:42:40] [build-stdout] [INFO] Includes=**\/*.jsp, **\/*.jspx,  **\/*.jspf
+[2023-04-05 00:42:40] [build-stdout] [INFO] Excludes=**\/.svn\/**
+[2023-04-05 00:42:40] [build-stdout] [INFO] Number of jsps for thread 1 : 18
+[2023-04-05 00:42:41] [build-stderr] Apr 05, 2023 12:42:41 AM org.apache.jasper.JspC execute
+[2023-04-05 00:42:41] [build-stderr] INFO: Generation completed with [0] errors in [675] milliseconds
+[2023-04-05 00:42:41] [build-stdout] [INFO] Number total of jsps : 18
+[2023-04-05 00:42:41] [build-stdout] [INFO] Compilation completed in 0 min, 0 sec
+```
+
+CURRENT STATE: not seeing any JSP files in the CodeQL db :humph:

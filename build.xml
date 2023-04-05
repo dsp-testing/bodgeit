@@ -20,12 +20,22 @@
 	<target name="hack">
 		<echo message="file=$(ant.file) home=${ant.home} bodge=${bodgeit.home}"/>
 	</target>
-		
+	
+	<!-- Jsp Compile -->
+	<target name="jsp-compile">
+	    <jspc srcdir="root"
+        destdir="build/gensrc"
+        package="org.antbook.jsp"
+        verbose="9">
+        <include name="**/*.jsp" />
+		</jspc>
+	</target>
+	
 
 	<!-- Compile all of the source code -->
 	<target name="compile">
 		<!-- Compile the java code -->
-		<javac target="1.7" destdir="build/WEB-INF/classes" srcdir="src" classpathref="java.classpath" />
+		<javac target="7" destdir="build/WEB-INF/classes" srcdir="src" classpathref="java.classpath" />
 	</target>
 
 	<target name="build" depends="compile">

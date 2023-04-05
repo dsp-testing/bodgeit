@@ -1,1 +1,3 @@
-build/WEB-INF/classes
+build
+codeql_db
+thebodgeitstore/target
