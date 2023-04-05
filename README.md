@@ -54,7 +54,7 @@ mkdir build/WEB-INF/classes
 ant -noinput -f "build.xml" "compile"
 
 ## Maven Build
-Added to inject jspc compiler step easily. Copied over java and jsp files to `thebodgeitstore` project.  Added jspc plugin to pom.xml, when running codeql seeing it compile the JSP files (if i make a syntax error in a tag, i see compiler error)
+Added to inject jspc compiler step easily. Copied over java and jsp files to `thebodgeitstore` project.  Added jspc plugin to pom.xml, when running codeql seeing it compile the JSP files (if i make a syntax error in a tag, i see compiler error) via `mvn clean package` or `mvn jspc:compile`
 
 ```
 cd bodgeitstore
@@ -76,3 +76,6 @@ yields:
 ```
 
 CURRENT STATE: not seeing any JSP files in the CodeQL db :humph:
+
+Next steps
+- debug why jsp files are not in codeql db
